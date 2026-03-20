@@ -5,6 +5,16 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* CoinPulse styles */
+  --color-bg-deep: var(--bg-deep);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-accent-deep: var(--accent-deep);
+  --color-text-muted: var(--text-muted);
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+
+  /* Shadcn/ui styles */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -84,6 +94,16 @@
 }
 
 .dark {
+  /* CoinPulse styles */
+  --bg-deep: #000510;
+  --bg-primary: #1a2027;
+  --bg-secondary: #1e2833;
+  --accent-deep: #1b254b;
+  --text-muted: #a3aed0;
+  --positive: #76da44;
+  --negative: #ff685f;
+
+  /* Shadcn/ui styles */
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -125,4 +145,46 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom Scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 9px;
+  background: #1e2833;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #171a34;
+}
+
+/* Table Custom Scrollbar styles */
+.custom-scrollbar [data-slot="table-container"] {
+  overflow-y: auto;
+}
+
+.custom-scrollbar [data-slot="table-container"]::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar [data-slot="table-container"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar [data-slot="table-container"]::-webkit-scrollbar-thumb {
+  border-radius: 9px;
+  background: #1e2833;
+}
+
+.custom-scrollbar [data-slot="table-container"]::-webkit-scrollbar-thumb:hover {
+  background: #171a34;
 }
