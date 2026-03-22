@@ -20,7 +20,7 @@ const columns: ColumnDef<CoinMarketData>[] = [
     accessorKey: "name",
     header: () => "Coin",
     cell: ({ row }) => (
-      <div className="pr-6 flex items-center gap-3">
+      <div className="pr-6 flex items-center gap-3 relative">
         <Image
           className="w-auto h-auto rounded-full"
           src={row.original.image}
