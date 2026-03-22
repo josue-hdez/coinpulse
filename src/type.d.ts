@@ -1,5 +1,11 @@
 type QueryParams = Record<string, string | number | boolean | undefined>;
 
+type Period = "daily" | "weekly" | "monthly" | "3months" | "6months" | "yearly";
+
+type PriceData = [number, number];
+
+type OHLCData = [number, number, number, number, number];
+
 interface CoinGeckoErrorBody {
   error?: string;
 }
@@ -34,4 +40,49 @@ interface CoinMarketData {
   price_change_percentage_1h_in_currency: number;
   price_change_percentage_24h_in_currency: number;
   price_change_percentage_7d_in_currency: number;
+}
+
+interface CoinData {
+  id: string;
+  name: string;
+  symbol: string;
+  image: {
+    large: string;
+    small: string;
+  };
+  market_data: {
+    current_price: {
+      usd: number;
+      [key: string]: number;
+    };
+    price_change_percentage_24h_in_currency: {
+      usd: number;
+    };
+    market_cap: {
+      usd: number;
+    };
+    total_volume: {
+      usd: number;
+    };
+    fully_diluted_valuation: {
+      usd: number;
+    };
+    circulating_supply: number;
+    total_supply: number;
+    max_supply: number;
+  };
+  market_cap_rank: number;
+  description: {
+    en: string;
+  };
+  links: {
+    homepage: string[];
+    blockchain_site: string[];
+    subreddit_url: string;
+    whitepaper: string;
+  };
+}
+
+interface CoinMarketChartData {
+  prices: PriceData[];
 }

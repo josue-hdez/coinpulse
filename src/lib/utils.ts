@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { ELLIPSIS } from "./constants";
+import { Time } from "lightweight-charts";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -67,3 +68,22 @@ export const buildPageNumbers = (
 
   return pages;
 };
+
+export const convertPriceData = (data: PriceData[]) =>
+  data.map((item) => ({
+    time: Math.floor(item[0] / 1000) as Time, // Convert ms to seconds
+    value: item[1], // The price
+  }));
+
+export const convertOHLCData = (data: OHLCData[]) =>
+  data
+    .map((d) => ({
+      time: d[0] as Time,
+      open: d[1],
+      high: d[2],
+      low: d[3],
+      close: d[4],
+    }))
+    .filter(
+      (item, index, arr) => index === 0 || item.time !== arr[index - 1].time,
+    );
