@@ -56,3 +56,23 @@ export const fetcher = async <T>(
 
   return response.json();
 };
+
+export const searchCoins = async (query: string) => {
+  const searchResult = await fetcher<SearchData>("search", {
+    query,
+  });
+
+  const coinMarkets = await fetcher<CoinMarketData[]>("coins/markets", {
+    vs_currency: "usd",
+    ids: searchResult?.coins?.map((coin) => coin.id)?.join(","),
+    price_change_percentage: "24h",
+  });
+
+  return searchResult?.coins?.map((coin, index) => ({
+    ...coin,
+    data: {
+      price_change_percentage_24h:
+        coinMarkets[index].price_change_percentage_24h_in_currency,
+    },
+  }));
+};

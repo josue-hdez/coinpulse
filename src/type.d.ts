@@ -6,6 +6,30 @@ type PriceData = [number, number];
 
 type OHLCData = [number, number, number, number, number];
 
+type TrendingCoin = {
+  item: {
+    id: string;
+    name: string;
+    symbol: string;
+    large: string;
+    data: {
+      price_change_percentage_24h: {
+        usd: number;
+      };
+    };
+  };
+};
+
+type SearchCoin = {
+  id: string;
+  name: string;
+  symbol: string;
+  large: string;
+  data: {
+    price_change_percentage_24h: number;
+  };
+};
+
 interface CoinGeckoErrorBody {
   error?: string;
 }
@@ -85,4 +109,12 @@ interface CoinData {
 
 interface CoinMarketChartData {
   prices: PriceData[];
+}
+
+interface TrendingCoinData {
+  coins: TrendingCoin[];
+}
+
+interface SearchData {
+  coins: SearchCoin[];
 }
