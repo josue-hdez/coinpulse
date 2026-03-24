@@ -19,7 +19,7 @@ const RowsPerPageSelect = () => {
     router.push(`/?page=${searchParams.get("page") || 1}&perPage=${perPage}`);
 
   return (
-    <Field className="w-fit ml-auto z-45" orientation="horizontal">
+    <Field className="w-fit z-45" orientation="horizontal">
       <FieldLabel className="hidden md:block" htmlFor="select-rows-per-page">
         Rows
       </FieldLabel>
