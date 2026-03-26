@@ -13,6 +13,7 @@ type TrendingCoin = {
     symbol: string;
     large: string;
     data: {
+      price: number;
       price_change_percentage_24h: {
         usd: number;
       };
